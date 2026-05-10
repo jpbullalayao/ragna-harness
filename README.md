@@ -1,6 +1,6 @@
 # ragna-harness
 
-Personal Claude Code agent skills for my own workflows. Each skill is individually installable via the [skills.sh](https://skills.sh) CLI.
+Personal agent skills for my own workflows. Each skill is individually installable via the [skills.sh](https://skills.sh) CLI.
 
 ## Skills
 
