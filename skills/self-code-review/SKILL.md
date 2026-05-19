@@ -132,9 +132,13 @@ If a ticket was referenced but the fetch failed, write: "Linear ticket KOR-XXXX 
 ## Review Order
 <Include this section when the diff is large (>10 files or >500 lines) OR touches any DB-migration-related files (`packages/db/drizzle/*.sql`, `packages/db/src/schema/**`, `packages/db/drizzle/meta/*`, or `packages/db/src/scripts/backfill-*`). Otherwise skip.
 
+Before grouping, collect the **complete file list** from the `git diff --name-status <BASE>..HEAD` output gathered in Step 3 — this is the authoritative set every group must draw from.
+
 When DB-migration files are present, list them as the FIRST grouping — schema context is load-bearing for everything downstream. Look for: new columns/types, NOT-NULL adds without defaults, dropped or renamed columns still referenced by app code, index/constraint changes, backfill correctness.
 
-Then list remaining file groupings in dependency order (schema → core/lib → API/server → UI), each with a one-line "what to look for" hint.>
+Then list remaining file groupings in dependency order (schema → core/lib → API/server → UI), each with a one-line "what to look for" hint.
+
+**Completeness check**: after forming all groups, verify every file from the complete list appears in exactly one group. Any file with no obvious grouping goes into an "Other" group — never drop a file silently.>
 
 ## Findings
 
