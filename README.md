@@ -36,6 +36,14 @@ Analyzes the current branch's diff against `origin/main` (or a specified branch)
 npx skills add jpbullalayao/ragna-ai --skill code-cleanup
 ```
 
+### `/create-ticket`
+
+Creates a ticket in your preferred issue tracker (defaults to Linear) with a consistent two-section format designed to be clear to both humans and AI agents. The **Context** section explains how the current system works; the **Requirements** section lists actionable acceptance criteria. Explores the codebase to ground the Context in real implementation details. Use when you want to "create a ticket", "file an issue", "write up a ticket", or "open a Linear issue".
+
+```bash
+npx skills add jpbullalayao/ragna-ai --skill create-ticket
+```
+
 ## Install all at once
 
 ```bash
@@ -45,4 +53,6 @@ npx skills add jpbullalayao/ragna-ai
 ## Requirements
 
 - `gh` CLI authenticated to GitHub (`gh auth login`)
-- Claude Code with MCP Linear server connected (for `/self-code-review` Linear ticket context — optional, degrades gracefully)
+- Claude Code with MCP Linear server connected:
+  - Required for `/create-ticket` (used to create issues)
+  - Optional for `/self-code-review` (fetches ticket context — degrades gracefully if unavailable)
